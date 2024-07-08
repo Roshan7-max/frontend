@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting</title>
+    <script>
+        async function fetchGreeting() {
+            const name = document.getElementById("name").value;
+            const response = await fetch(`http://localhost:8080/greeting?name=${name}`);
+            const data = await response.json();
+            document.getElementById("greeting").innerText = data.message;
+        }
+    </script>
+</head>
+<body>
+    <h1>Greeting Service</h1>
+    <input type="text" id="name" placeholder="Enter your name">
+    <button onclick="fetchGreeting()">Get Greeting</button>
+    <p id="greeting"></p>
+</body>
+</html>
